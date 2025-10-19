@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Toolkit Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #0d1117;
+      color: #e6edf3;
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 260px;
+      background: #161b22;
+      padding: 20px;
+      border-right: 1px solid #30363d;
+    }
+    .sidebar h2 {
+      color: #58a6ff;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .sidebar ul {
+      list-style: none;
+    }
+    .sidebar ul li {
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 8px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .sidebar ul li:hover {
+      background: #238636;
+      color: white;
+    }
+    .main {
+      flex: 1;
+      padding: 30px;
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .topbar h1 {
+      font-size: 24px;
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .tool-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .tool-card:hover {
+      transform: translateY(-5px);
+      border-color: #58a6ff;
+    }
+    .tool-card h3 {
+      color: #58a6ff;
+      margin-bottom: 10px;
+    }
+    .tool-card p {
+      color: #8b949e;
+      font-size: 14px;
+    }
+    .status-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .status-active { background: #238636; color: white; }
+    .status-idle { background: #6e7681; color: white; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>AI Toolkit</h2>
+    <ul>
+      <li>Dashboard Overview</li>
+      <li>Campaign Update</li>
+      <li>Missing Product</li>
+      <li>Champion List</li>
+      <li>DaVinci AI Agent</li>
+      <li>Order Process</li>
+      <li>Rich Product Score</li>
+      <li>Audience Target</li>
+      <li>Policy Bypass</li>
+      <li>Settings</li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h1>Toolkit Control Center</h1>
+      <div>🔒 Secured Panel</div>
+    </div>
+
+    <div class="tool-grid">
+      <div class="tool-card">
+        <h3>Campaign Update</h3>
+        <p>Manage and automate promotional campaigns with AI-driven optimization.</p>
+        <span class="status-badge status-active">Active</span>
+      </div>
+
+      <div class="tool-card">
+        <h3>Missing Product</h3>
+        <p>Automatically detect missing SKUs and restock suggestions powered by AI.</p>
+        <span class="status-badge status-idle">Idle</span>
+      </div>
+
+      <div class="tool-card">
+        <h3>Champion List</h3>
+        <p>Identify top-performing products and sellers in real time.</p>
+        <span class="status-badge status-active">Active</span>
+      </div>
+
+      <div class="tool-card">
+        <h3>DaVinci AI Agent Management</h3>
+        <p>Control all AI agents for product, order, and customer response handling.</p>
+        <span class="status-badge status-active">Active</span>
+      </div>
+
+      <div class="tool-card">
+        <h3>Order Process Auto Message</h3>
+        <p>Automatically send order confirmation and delivery updates.</p>
+        <span class="status-badge status-idle">Idle</span>
+      </div>
+
+      <div class="tool-card">
+        <h3>Rich Product Score</h3>
+        <p>Rate and evaluate products with AI metrics for ranking and SEO.</p>
+        <span class="status-badge status-active">Active</span>
+      </div>
+
+      <div class="tool-card">
+        <h3>Audience Target</h3>
+        <p>Use smart segmentation to reach the right audience for your product line.</p>
+        <span class="status-badge status-idle">Idle</span>
+      </div>
+
+      <div class="tool-card">
+        <h3>Policy Bypass</h3>
+        <p>Bypass unnecessary policy checks (simulation only, not real).</p>
+        <span class="status-badge status-active">Active</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
