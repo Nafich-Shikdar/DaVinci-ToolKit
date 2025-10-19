@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing Toolkit Pro</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --gray: #6c757d;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            box-shadow: var(--card-shadow);
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .nav-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-left: 4px solid var(--accent);
+        }
+
+        .nav-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .header h1 {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Tool Cards */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .tool-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .campaign-update .tool-icon { background-color: var(--primary); }
+        .missing-product .tool-icon { background-color: var(--warning); }
+        .champion-list .tool-icon { background-color: var(--success); }
+        .davinci-ai .tool-icon { background-color: #ff6b6b; }
+        .order-process .tool-icon { background-color: #06d6a0; }
+        .product-score .tool-icon { background-color: #ffd166; }
+        .audience-target .tool-icon { background-color: #118ab2; }
+        .policy-bypass .tool-icon { background-color: #073b4c; }
+
+        .tool-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .tool-description {
+            color: var(--gray);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .tool-status {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-active {
+            background-color: #06d6a0;
+        }
+
+        .status-inactive {
+            background-color: var(--gray);
+        }
+
+        .tool-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+
+        /* Dashboard Stats */
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">⚡</div>
+                <div class="logo-text">Toolkit Pro</div>
+            </div>
+            <div class="nav-item active">
+                <div class="nav-icon">📊</div>
+                <div>Dashboard</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">🔄</div>
+                <div>Campaign Update</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">🔍</div>
+                <div>Missing Product</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">🏆</div>
+                <div>Champion List</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">🤖</div>
+                <div>DaVinci AI Agent</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">📦</div>
+                <div>Order Process</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">⭐</div>
+                <div>Rich Product Score</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">🎯</div>
+                <div>Audience Target</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">🔓</div>
+                <div>Policy Bypass</div>
+            </div>
+            <div class="nav-item">
+                <div class="nav-icon">⚙️</div>
+                <div>Settings</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h1>Marketing Toolkit Dashboard</h1>
+                <div class="user-info">
+                    <div class="user-avatar">JD</div>
+                    <div>John Doe</div>
+                </div>
+            </div>
+
+            <!-- Dashboard Stats -->
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-value">24</div>
+                    <div class="stat-label">Active Campaigns</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">89%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1,247</div>
+                    <div class="stat-label">Products Tracked</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">AI Agents Active</div>
+                </div>
+            </div>
+
+            <!-- Tool Cards -->
+            <div class="tools-grid">
+                <!-- Campaign Update -->
+                <div class="tool-card campaign-update">
+                    <div class="tool-header">
+                        <div class="tool-icon">🔄</div>
+                        <div>
+                            <div class="tool-title">Campaign Update</div>
+                            <div class="tool-status">
+                                <div class="status-indicator status-active"></div>
+                                <div>Last updated: 2 hours ago</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Automatically update and optimize your marketing campaigns based on performance metrics.
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary">Run Update</button>
+                        <button class="btn btn-outline">Configure</button>
+                    </div>
+                </div>
+
+                <!-- Missing Product -->
+                <div class="tool-card missing-product">
+                    <div class="tool-header">
+                        <div class="tool-icon">🔍</div>
+                        <div>
+                            <div class="tool-title">Missing Product</div>
+                            <div class="tool-status">
+                                <div class="status-indicator status-active"></div>
+                                <div>12 products missing</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Identify and track products that are missing from your inventory or catalog.
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary">Scan Now</button>
+                        <button class="btn btn-outline">View Report</button>
+                    </div>
+                </div>
+
+                <!-- Champion List -->
+                <div class="tool-card champion-list">
+                    <div class="tool-header">
+                        <div class="tool-icon">🏆</div>
+                        <div>
+                            <div class="tool-title">Champion List</div>
+                            <div class="tool-status">
+                                <div class="status-indicator status-active"></div>
+                                <div>24 champions identified</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Identify your top-performing products and campaigns to focus resources effectively.
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary">Generate List</button>
+                        <button class="btn btn-outline">View Champions</button>
+                    </div>
+                </div>
+
+                <!-- DaVinci AI Agent Management -->
+                <div class="tool-card davinci-ai">
+                    <div class="tool-header">
+                        <div class="tool-icon">🤖</div>
+                        <div>
+                            <div class="tool-title">DaVinci AI Agent Management</div>
+                            <div class="tool-status">
+                                <div class="status-indicator status-active"></div>
+                                <div>42 agents active</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Manage and configure your AI agents for automated marketing optimization.
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary">Manage Agents</button>
+                        <button class="btn btn-outline">Create New</button>
+                    </div>
+                </div>
+
+                <!-- Order Process Auto Message -->
+                <div class="tool-card order-process">
+                    <div class="tool-header">
+                        <div class="tool-icon">📦</div>
+                        <div>
+                            <div class="tool-title">Order Process Auto Message</div>
+                            <div class="tool-status">
+                                <div class="status-indicator status-active"></div>
+                                <div>Active for all orders</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Automatically send messages to customers at each stage of the order process.
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary">Configure Messages</button>
+                        <button class="btn btn-outline">View Templates</button>
+                    </div>
+                </div>
+
+                <!-- Rich Product Score -->
+                <div class="tool-card product-score">
+                    <div class="tool-header">
+                        <div class="tool-icon">⭐</div>
+                        <div>
+                            <div class="tool-title">Rich Product Score</div>
+                            <div class="tool-status">
+                                <div class="status-indicator status-active"></div>
+                                <div>Avg score: 8.2/10</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Calculate and optimize product scores based on multiple performance metrics.
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary">Calculate Scores</button>
+                        <button class="btn btn-outline">View Analytics</button>
+                    </div>
+                </div>
+
+                <!-- Audience Target -->
+                <div class="tool-card audience-target">
+                    <div class="tool-header">
+                        <div class="tool-icon">🎯</div>
+                        <div>
+                            <div class="tool-title">Audience Target</div>
+                            <div class="tool-status">
+                                <div class="status-indicator status-active"></div>
+                                <div>5 segments active</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Define and manage audience segments for targeted marketing campaigns.
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary">Create Segment</button>
+                        <button class="btn btn-outline">View Segments</button>
+                    </div>
+                </div>
+
+                <!-- Policy Bypass -->
+                <div class="tool-card policy-bypass">
+                    <div class="tool-header">
+                        <div class="tool-icon">🔓</div>
+                        <div>
+                            <div class="tool-title">Policy Bypass</div>
+                            <div class="tool-status">
+                                <div class="status-indicator status-inactive"></div>
+                                <div>Requires authorization</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-description">
+                        Advanced tool for bypassing platform restrictions (use with caution).
+                    </div>
+                    <div class="tool-actions">
+                        <button class="btn btn-primary" disabled>Request Access</button>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple interactivity for the sidebar
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.nav-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Simple interactivity for buttons
+        document.querySelectorAll('.btn-primary').forEach(button => {
+            button.addEventListener('click', function() {
+                if (!this.disabled) {
+                    alert('This feature would be functional in a complete application.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
