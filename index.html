@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .toolkit-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            overflow: hidden;
+            min-height: 700px;
+        }
+
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50; /* Dark blue-grey */
+            color: #ecf0f1; /* Light grey for text */
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .sidebar h2 {
+            font-size: 1.8em;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #ecf0f1;
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 15px;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            flex-grow: 1;
+        }
+
+        .nav-list li {
+            margin-bottom: 15px;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: #ecf0f1;
+            font-size: 1.1em;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-list a:hover,
+        .nav-list a.active {
+            background-color: #3498db; /* Bright blue */
+            color: #ffffff;
+        }
+
+        .nav-list a i {
+            margin-right: 15px;
+            font-size: 1.3em;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 40px;
+            background-color: #f9fafb;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid #3498db;
+        }
+
+        .user-info span {
+            font-weight: bold;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            flex-grow: 1;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card h3 {
+            font-size: 1.6em;
+            color: #34495e;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card h3 i {
+            margin-right: 12px;
+            color: #3498db;
+            font-size: 1.2em;
+        }
+
+        .card p {
+            color: #777;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .card .action-button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .card .action-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Icons - using Font Awesome for a modern look */
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+    </style>
+</head>
+<body>
+    <div class="toolkit-container">
+        <aside class="sidebar">
+            <h2>AI Toolkit</h2>
+            <ul class="nav-list">
+                <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> Campaign Update</a></li>
+                <li><a href="#"><i class="fas fa-box-open"></i> Missing Product</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Champion List</a></li>
+                <li><a href="#"><i class="fas fa-robot"></i> DaVinci Ai Agent</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Order Auto Message</a></li>
+                <li><a href="#"><i class="fas fa-star-half-alt"></i> Rich Product Score</a></li>
+                <li><a href="#"><i class="fas fa-bullseye"></i> Audience Target</a></li>
+                <li><a href="#"><i class="fas fa-ban"></i> Policy Bypass</a></li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <div class="header">
+                <h1>Dashboard Overview</h1>
+                <div class="user-info">
+                    <img src="https://via.placeholder.com/45/3498db/ffffff?text=AI" alt="User Avatar">
+                    <span>Admin User</span>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <h3><i class="fas fa-chart-line"></i> Campaign Update</h3>
+                    <p>Track the latest performance metrics and engagement for your active campaigns. Simulate real-time data feeds.</p>
+                    <button class="action-button">View Details</button>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-box-open"></i> Missing Product</h3>
+                    <p>Identify products that are unexpectedly out of stock or have incomplete data listings. *Spoiler: It's always zero.*</p>
+                    <button class="action-button">Investigate</button>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-users"></i> Champion List</h3>
+                    <p>Manage and discover your top-performing advocates and influencers. A prestigious list with no actual members.</p>
+                    <button class="action-button">Manage Champions</button>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-robot"></i> DaVinci AI Agent Management</h3>
+                    <p>Oversee your fleet of highly advanced AI agents. They're very busy, doing absolutely nothing important.</p>
+                    <button class="action-button">Configure Agents</button>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-envelope"></i> Order Process Auto Message</h3>
+                    <p>Automate personalized messages for various stages of the order fulfillment process. Messages go nowhere.</p>
+                    <button class="action-button">Set Up Automation</button>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-star-half-alt"></i> Rich Product Score</h3>
+                    <p>Evaluate and enhance the completeness and quality of your product information. The score is always 100%!</p>
+                    <button class="action-button">Optimize Scores</button>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-bullseye"></i> Audience Target</h3>
+                    <p>Define and refine target audience segments for marketing efforts. Precision targeting, zero impact.</p>
+                    <button class="action-button">Define Segments</button>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-ban"></i> Policy Bypass</h3>
+                    <p>Navigate and manage complex regulatory policies with ease. *Warning: May or may not bypass anything.*</p>
+                    <button class="action-button">Access Bypass Tools</button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
